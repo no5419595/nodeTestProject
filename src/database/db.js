@@ -1,5 +1,5 @@
 const dataFile = require('./data/data.json');
-var fs = require('fs');
+const fs = require('fs');
 const pageSize = 10;
 
 module.exports = {

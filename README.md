@@ -10,14 +10,14 @@ Test project for Guardium NodeJS assignment
 
 2. To query data, set `query: true` in the body. To append new data, use `query: false`
 
-3. append the sort/ filter json to the body  like the example.
+3. When querying, append the sort/ filter json to the body  like the example.
 
 {
 	"query": true,
 	"filters":[
 		{"field": "first_name", "operator": "STARTSWITH", "value": "Sar"},
 		{"field": "age", "operator": "GREATER-THAN", "value": 21},
-		{"field": "last_name", "operator": "CONTAINS", "value": "Do"}],
+		{"field": "last_name", "operator": "CONTAINS", "value": "Mus"}],
 	"sort": [{"first_name": "asc", "last_name": "desc", "age": "asc"}] 
 }
 
@@ -28,3 +28,17 @@ Test project for Guardium NodeJS assignment
 http://localhost:8000?pagenumber=1
 
 If page number provided is greater than available pages, the first page will be returned.
+
+
+5. To add new user, add a body like following: 
+
+{
+	"query": false,
+	"newuser":{
+        "first_name": "Grace",
+        "last_name": "Kim",
+        "email": "gracekim@ca.ibm.com",
+        "gender": "Female",
+        "age": 50
+	} 
+}

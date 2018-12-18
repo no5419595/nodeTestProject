@@ -40,6 +40,6 @@ app.post('/', function(req, res) {
     }
     //add more data
     else if (body.query==false){
-        res.send(database.addData(req.body));
+        res.send(database.addData(req.body.newuser));
     }
 });
