@@ -4,10 +4,13 @@ const pageSize = 10;
 
 module.exports = {
 
+
+    //return all data 
     all: function(){
         return dataFile;
     },
 
+    //return data only from the page specified
     pagination: function(data, pageNumber){
         if(data.length > pageSize){
             data = data.slice((pageNumber -1) * pageSize, pageNumber * pageSize);
@@ -15,6 +18,7 @@ module.exports = {
         return data;
     },
 
+    //add more data
     addData: function(data){
         //append id to the new data
         lastData = dataFile[dataFile.length-1];
@@ -27,61 +31,55 @@ module.exports = {
         });
     },
 
+    //filter data
     filterData:function(data, filters){
         console.log('filters:', filters);
+        
         let resultSet = [];
+
+        //maximum 3 filtering criterias
+        let flength = filters.length >3? 3: filters.length;
 
         for(let k=0; k < data.length; k++){
             let currentData = data[k];
-            console.log('currentData:', currentData);
 
             let addData = true;
-            for(let i = 0; i < filters.length; i++) {
+            for(let i = 0; i < flength; i++) {
                 var filter = filters[i];        
-                console.log('filter: ', filter);
                 if(filter.field=="first_name" || filter.field=="last_name" || filter.field=="email" || filter.field=="gender"){
                     switch(filter.operator) {
                         case "STARTSWITH":
-                            console.log('operator: ', filter.operator);
                             if(currentData[filter.field].indexOf(filter.value)!=0){
                                 addData=false;
                             }
-                            console.log('addData?: ', addData);
                             break;
                         case "CONTAINS":
-                            console.log('operator: ', filter.operator);
                             if(currentData[filter.field].indexOf(filter.value)==-1){
                                 addData=false;
                             }
-                            console.log('addData?: ', addData);
                           break;
                     }
                 }else if (filter.field=="age" || filter.field=="id"){
                     switch(filter.operator) {
                         case "GREAT-THAN":
-                            console.log('operator: ', filter.operator);
                             if(currentData[filter.field]<= filter.value){
                                 addData=false;
                             }
-                            console.log('addData?: ', addData);
                             break;
                         case "EQUALS":
-                            console.log('operator: ', filter.operator);
                             if(currentData[filter.field]!= filter.value){
                                 addData=false;
                             }
-                            console.log('addData?: ', addData);
                           break;
                         case "LESS-THAN":
-                            console.log('operator: ', filter.operator);
                             if(currentData[filter.field]>=filter.value){
                                 addData=false;
                             }
-                            console.log('addData?: ', addData);
                             break;
                     }
                 }
             }
+            //if all filters satisfy, push to the result
             if(addData){
                 resultSet.push(currentData);
             }
@@ -89,8 +87,14 @@ module.exports = {
         return resultSet;
     },
 
+    //sort
     sortData: function(data, sort){
         let criterias = sort[0];
+
+        //maximum 3 sorting criterias
+        if(criterias.length > 3){
+            criterias=criterias.slice(0,3);
+        }
         for (var field in criterias) {
             console.log("sort by field:" , field, " : " , criterias[field]);
 
