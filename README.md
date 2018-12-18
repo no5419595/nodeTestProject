@@ -12,9 +12,9 @@ Test project for Guardium NodeJS assignment
 
 3. When querying, append the sort/ filter json to the body  like the example.
 
-{
 
-	"query": true,
+
+	{"query": true,
 	
 	"filters":[
 	
@@ -25,8 +25,8 @@ Test project for Guardium NodeJS assignment
 		{"field": "last_name", "operator": "CONTAINS", "value": "Mus"}
 	],
 	"sort": [{"first_name": "asc", "last_name": "desc", "age": "asc"}] 
-	
-}
+	}
+
 
 
 
@@ -40,9 +40,9 @@ Page size is 10 hardcoded.
 
 5. To add new user, add a body like following: 
 
-{
 
-	"query": false,
+
+	{"query": false,
 	
 	"newuser":{
 	
@@ -56,5 +56,6 @@ Page size is 10 hardcoded.
 	
         	"age": 50
 	
-	} 
-}
+		} 
+	}
+
