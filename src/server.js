@@ -10,40 +10,13 @@ app.listen(8000, () => {
 }); 
 
 
-//REST API
-// app.get('/', function(req, res) {
-//     res.setHeader('Content-Type', 'application/json');
-
-//     //grab all data
-//     let data = database.all();
-
-//     //filtering is done first since it will reduce the number of data processed later
-//     if(req.query.filters){
-//         let filters= req.query.filters.split(',');
-//         data = database.filterData(data,filters);
-//     }
-
-//     //sort
-//     if(req.query.sort){
-//         let sorting= req.query.sort.split(',');
-//         data= database.sortData(data, sorting);
-//     }
-
-//     //pagination
-//     if(req.query.pagenumber){
-//         data= database.pagination(data, req.query.pagenumber);
-//     }
-
-//     res.send(data);
-
-// });
-
 app.post('/', function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     console.log('body is ',req.body);
     let body = req.body;
 
+    //query 
     if(body.query==true){
         //grab all data
         let data = database.all();
@@ -64,8 +37,9 @@ app.post('/', function(req, res) {
         }
 
         res.send(data);
-    }else if (body.query==add){
+    }
+    //add more data
+    else if (body.query==false){
         res.send(database.addData(req.body));
-        res.send();
     }
 });
