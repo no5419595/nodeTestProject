@@ -13,19 +13,19 @@ Test project for Guardium NodeJS assignment
 3. When querying, append the sort/ filter json to the body  like the example.
 
 
+{
+"query": true,
 
-	{"query": true,
-	
-	"filters":[
-	
-		{"field": "first_name", "operator": "STARTSWITH", "value": "Sar"},
-		
-		{"field": "age", "operator": "GREATER-THAN", "value": 21},
-		
-		{"field": "last_name", "operator": "CONTAINS", "value": "Mus"}
-	],
-	"sort": [{"first_name": "asc", "last_name": "desc", "age": "asc"}] 
-	}
+"filters":[
+
+	{"field": "first_name", "operator": "STARTSWITH", "value": "Sar"},
+
+	{"field": "age", "operator": "GREATER-THAN", "value": 21},
+
+	{"field": "last_name", "operator": "CONTAINS", "value": "Mus"}
+],
+"sort": [{"first_name": "asc", "last_name": "desc", "age": "asc"}] 
+}
 
 
 
@@ -41,21 +41,20 @@ Page size is 10 hardcoded.
 5. To add new user, add a body like following: 
 
 
+{"query": false,
 
-	{"query": false,
-	
-	"newuser":{
-	
-        	"first_name": "Grace",
-	
-        	"last_name": "Kim",
-	
-        	"email": "gracekim@ca.ibm.com",
-	
-        	"gender": "Female",
-	
-        	"age": 50
-	
-		} 
-	}
+"newuser":{
+
+	"first_name": "Grace",
+
+	"last_name": "Kim",
+
+	"email": "gracekim@ca.ibm.com",
+
+	"gender": "Female",
+
+	"age": 50
+
+	} 
+}
 
