@@ -28,6 +28,7 @@ Test project for Guardium NodeJS assignment
 http://localhost:8000?pagenumber=1
 
 If page number provided is greater than available pages, the first page will be returned.
+Page size is 10 hardcoded.
 
 
 5. To add new user, add a body like following: 
