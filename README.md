@@ -14,13 +14,11 @@ http://localhost:8000?filters=first_name|STARTSWITH|Sar,last_name|CONTAINS|Do,ag
 
 The above filtering query is equivalent to the following:
  [
- 
      {"field": "first_name", "operator": "STARTSWITH", "value": "Sar"},
      
      {"field": "age", "operator": "GREATER-THAN", "value": 21},
      
-     {"field": "last_name", "operator": "CONTAINS", "value": "Doyle"}
-     
+     {"field": "last_name", "operator": "CONTAINS", "value": "Doyle"} 
  ] 
         
 
@@ -43,4 +41,4 @@ The above filtering query is equivalent to the following:
 
 http://localhost:8000?pagenumber=1
 
-If page number greater than available pages, the first page will be returned.
+If page number provided is greater than available pages, the first page will be returned.
